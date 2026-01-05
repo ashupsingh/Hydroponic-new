@@ -1,0 +1,245 @@
+.issue-list-container {
+    padding: 2rem;
+}
+
+.issue-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.issue-filters button {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.issue-filters button:hover,
+.issue-filters button.active {
+    background: var(--brand-blue);
+    color: white;
+    border-color: var(--brand-blue);
+}
+
+.issues-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.issue-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid var(--border-dark-700);
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.issue-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--brand-blue);
+}
+
+.issue-card.resolved {
+    border-left: 4px solid var(--brand-green);
+}
+
+.issue-card.open {
+    border-left: 4px solid var(--brand-red);
+}
+
+.issue-card.in-progress {
+    border-left: 4px solid var(--brand-yellow);
+}
+
+.issue-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.issue-id {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.open {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--brand-red);
+}
+
+.status-badge.in-progress {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--brand-yellow);
+}
+
+.status-badge.resolved {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--brand-green);
+}
+
+.description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.issue-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info strong {
+    color: white;
+}
+
+.user-info span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.date {
+    color: var(--text-muted);
+}
+
+/* Modal specific styles */
+.issue-modal {
+    max-width: 600px;
+    background: #1e293b;
+}
+
+.detail-row {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+}
+
+.detail-row strong {
+    color: #94a3b8;
+    display: inline-block;
+    width: 80px;
+}
+
+.detail-row.full-width {
+    margin-top: 1.5rem;
+}
+
+.detail-row.full-width strong {
+    width: 100%;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #94a3b8;
+}
+
+.full-text {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    color: white;
+    white-space: pre-wrap;
+}
+
+.response-box {
+    border-left: 3px solid var(--brand-blue);
+    padding-left: 1rem;
+}
+
+.reply-form {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reply-input {
+    width: 100%;
+    min-height: 100px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    color: white;
+    font-family: inherit;
+    margin-bottom: 1rem;
+    resize: vertical;
+}
+
+.reply-input:focus {
+    outline: none;
+    border-color: var(--brand-blue);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.btn-reply,
+.btn-resolve {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-reply {
+    background: var(--brand-blue);
+    color: white;
+}
+
+.btn-reply:hover {
+    background: #2563eb;
+}
+
+.btn-resolve {
+    background: transparent;
+    border: 1px solid var(--brand-green);
+    color: var(--brand-green);
+}
+
+.btn-resolve:hover {
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem;
+    color: var(--text-muted);
+}

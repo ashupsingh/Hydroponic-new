@@ -1,0 +1,158 @@
+:root {
+  --bg-dark: #121212;
+  --bg-card: #1e1e2d;
+  --bg-card-hover: #27273a;
+  --primary: #00e676;
+  /* Vibrant Green for Hydroponics */
+  --primary-glow: rgba(0, 230, 118, 0.4);
+  --secondary: #2979ff;
+  /* Tech Blue */
+  --accent: #ff9100;
+  /* Orange accent */
+  --text-main: #ffffff;
+  --text-muted: #b0b0b0;
+  --border-color: #333333;
+  --font-main: 'Inter', sans-serif;
+  --glass-bg: rgba(30, 30, 45, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Utilities */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #000;
+  box-shadow: 0 4px 15px var(--primary-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--primary-glow);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background: rgba(0, 230, 118, 0.1);
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Glassmorphism Card */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}

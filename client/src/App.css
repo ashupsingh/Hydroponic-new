@@ -1,0 +1,14 @@
+/* App.css - Cleaned up to allow full screen layout */
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

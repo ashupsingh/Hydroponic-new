@@ -1,0 +1,274 @@
+/* Landing Page Specific Styles */
+.hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Dark gradient background to simulate the dashboard feel */
+    background: radial-gradient(circle at 50% 50%, #1e1e2d 0%, #121212 100%);
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 230, 118, 0.05) 0%, transparent 60%);
+    animation: rotate 60s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    justify-content: center;
+}
+
+.hero-stats {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Technologies Section */
+.bg-darker {
+    background-color: #0d0d12;
+}
+
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.section-header .title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.section-header .subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.tech-card {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image {
+    height: 200px;
+    background-color: #27273a;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    /* In a real scenario, use actual images here via background-image */
+}
+
+.hydro-img {
+    background: linear-gradient(45deg, #1e3c72, #2a5298);
+    /* Placeholder */
+}
+
+.aero-img {
+    background: linear-gradient(45deg, #43cea2, #185a9d);
+    /* Placeholder */
+}
+
+.tech-features {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+.tech-features li {
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Process Section */
+.process-section {
+    background-color: var(--bg-card);
+}
+
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.step {
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+}
+
+.step-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05);
+    position: absolute;
+    top: -2rem;
+    left: -1rem;
+    z-index: 0;
+}
+
+.step h3 {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.step p {
+    position: relative;
+    z-index: 1;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.step-line {
+    display: none;
+    /* Hide for now, complex to make responsive with pure CSS Flex */
+}
+
+/* Products Section */
+.icon-box {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .process-steps {
+        flex-direction: column;
+        gap: 3rem;
+    }
+}
+
+/* Solutions Section */
+.bg-card-alt {
+    background-color: #121212;
+    /* Slightly dark background to contrast with cards */
+}
+
+.solution-card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.solution-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary);
+    box-shadow: 0 10px 30px rgba(41, 121, 255, 0.2);
+}
+
+.solution-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(41, 121, 255, 0.1);
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.solution-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.solution-card p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.learn-more {
+    color: var(--secondary);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
+}
+
+.learn-more:hover {
+    gap: 1rem;
+}
