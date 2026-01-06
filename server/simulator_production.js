@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Production MongoDB URI (from your Vercel deployment)
-const MONGO_URI = 'mongodb://ankitsingh12326434_db_user:sRAq3FScDKWqHx6K@ac-a0fxbaz-shard-00-00.6aenydg.mongodb.net:27017,ac-a0fxbaz-shard-00-01.6aenydg.mongodb.net:27017,ac-a0fxbaz-shard-00-02.6aenydg.mongodb.net:27017/hydroponic?ssl=true&replicaSet=atlas-13ld4l-shard-0&authSource=admin&retryWrites=true&w=majority';
+const MONGO_URI = 'YOUR_MONGO_URL';
 
 // Define schemas inline (since we can't import from models)
 const deviceSchema = new mongoose.Schema({
