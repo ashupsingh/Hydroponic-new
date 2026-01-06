@@ -93,11 +93,11 @@ router.post('/verify-otp', async (req, res) => {
             return res.status(400).json({ msg: 'Invalid OTP' });
         }
 
-        // Activate account
-        user.isVerified = true;
-        user.otp = null;
-        user.otpExpiry = null;
-        await user.save();
+        // Activate account efficiently
+        await User.findByIdAndUpdate(user._id, {
+            $set: { isVerified: true },
+            $unset: { otp: 1, otpExpiry: 1 }
+        });
 
         res.json({ msg: 'Account verified successfully! You can now login.' });
 

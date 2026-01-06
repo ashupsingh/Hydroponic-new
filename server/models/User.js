@@ -46,12 +46,12 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Auto-increment userNumber before saving
-UserSchema.pre('save', async function (next) {
+// Auto-increment userNumber before saving
+UserSchema.pre('save', async function () {
     if (this.isNew && !this.userNumber) {
         const lastUser = await this.constructor.findOne({}, {}, { sort: { 'userNumber': -1 } });
         this.userNumber = lastUser ? lastUser.userNumber + 1 : 1;
     }
-    next();
 });
 
 module.exports = mongoose.model('User', UserSchema);

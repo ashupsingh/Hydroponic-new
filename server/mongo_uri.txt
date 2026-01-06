@@ -1,0 +1,1 @@
+mongodb://ankitsingh12326434_db_user:<PASSWORD>@ac-a0fxbaz-shard-00-00.6aenydg.mongodb.net:27017,ac-a0fxbaz-shard-00-01.6aenydg.mongodb.net:27017,ac-a0fxbaz-shard-00-02.6aenydg.mongodb.net:27017/hydroponic?ssl=true&replicaSet=atlas-13ld4l-shard-0&authSource=admin&retryWrites=true&w=majority

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data Generator - Keep This Tab Open</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #00e676;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            font-size: 18px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 230, 118, 0.1);
+            border-radius: 10px;
+            border: 1px solid #00e676;
+        }
+
+        .log {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        .log-entry {
+            margin: 5px 0;
+            padding: 5px;
+            border-left: 3px solid #00e676;
+            padding-left: 10px;
+        }
+
+        .error {
+            border-left-color: #ff5252;
+            color: #ff5252;
+        }
+
+        .pulse {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #00e676;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .warning {
+            background: rgba(255, 152, 0, 0.1);
+            border: 1px solid #ff9800;
+            color: #ff9800;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌱 Sensor Data Generator</h1>
+        <p>Keep this tab open during your demo</p>
+
+        <div class="status">
+            <span class="pulse"></span>
+            <span id="status">Initializing...</span>
+        </div>
+
+        <div class="warning">
+            ⚠️ <strong>Important:</strong> Keep this browser tab open to continuously generate sensor data for your
+            dashboard.
+        </div>
+
+        <div class="log" id="log"></div>
+    </div>
+
+    <script>
+        const API_URL = 'https://hydroponic-new.vercel.app';
+        const UPDATE_INTERVAL = 2000; // 2 seconds
+        let updateCount = 0;
+
+        function addLog(message, isError = false) {
+            const log = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry' + (isError ? ' error' : '');
+            const time = new Date().toLocaleTimeString();
+            entry.textContent = `[${time}] ${message}`;
+            log.insertBefore(entry, log.firstChild);
+
+            // Keep only last 20 entries
+            while (log.children.length > 20) {
+                log.removeChild(log.lastChild);
+            }
+        }
+
+        async function updateSensors() {
+            try {
+                const response = await fetch(`${API_URL}/api/update-sensors`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    updateCount++;
+                    document.getElementById('status').textContent =
+                        `Active - ${updateCount} updates sent`;
+                    addLog(`✓ Updated ${data.count} devices: ${data.devices.join(', ')}`);
+                } else {
+                    addLog(`✗ Error: ${data.error || 'Unknown error'}`, true);
+                }
+            } catch (error) {
+                addLog(`✗ Network error: ${error.message}`, true);
+            }
+        }
+
+        // Start updating
+        addLog('Generator started');
+        updateSensors(); // Initial update
+        setInterval(updateSensors, UPDATE_INTERVAL);
+    </script>
+</body>
+
+</html>

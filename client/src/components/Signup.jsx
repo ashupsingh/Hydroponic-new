@@ -149,15 +149,16 @@ const Signup = () => {
             const data = await res.json();
 
             if (res.ok) {
-                const data = await res.json();
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('role', data.user.role);
-                localStorage.setItem('userName', data.user.name);
                 setShowOTPModal(false);
-                alert('Account verified successfully!');
-                navigate('/dashboard');
+                alert('Account verified successfully! Please login to continue.');
+                navigate('/login');
             } else {
-                setOtpError(data.msg || 'Invalid OTP');
+                if (data.msg === 'Account already verified') {
+                    alert('Account is already verified! Redirecting to login...');
+                    navigate('/login');
+                } else {
+                    setOtpError(data.msg || 'Invalid OTP');
+                }
             }
         } catch (err) {
             setOtpError('Server error. Please try again.');
